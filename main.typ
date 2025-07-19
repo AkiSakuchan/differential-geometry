@@ -4,6 +4,6 @@
 #import cosmos.rainbow: *
 #show: show-theorion
 
-#show: rest => book(title: [微分几何], authors: "Aki Sakuchan", rest)
+#show: rest => book(title: [微分几何], authors: "Aki Sakuchan", bib-file: "references.bib" ,rest)
 
 #include "联络.typ"
