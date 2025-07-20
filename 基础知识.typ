@@ -48,21 +48,21 @@ $r$-形式 $omega$ 在 $p$ 附近可以唯一写作
 更具体地说，如果 $omega = omega_1 and dots and omega_r$，这里 $omega_i$ 是 $1$-形式，那么对于 $X_j in T_p M, j=1, dots,r$ 有
 #nonum-equation($omega(X_1, dots, X_r) = det((omega_i (X_j))_(1<= i,j <= r))$)
 
-我们用 $Omega^r (U)$ 表示开集 $U subset.eq M$ 上的全体 $r$-形式构成的向量空间，并约定 $Omega^0$ 就是 $U$ 上的光滑函数。再约定
-#nonum-equation($Omega(U) = plus.big_(r=0)^m Omega^r (U)$)
-这样每个 $Omega^r$ 是 $M$ 上的实向量空间层，也可以视为 $scr(O)_M$-模，这里 $scr(O)_M$ 表示 $M$ 上的光滑函数层：我们定义 $(f omega)_p = f(p) omega_p$。
-这样 $Omega$ 形成一个 $M$ 上的 $scr(O)_M$-代数。于是*外微分算子(exterior differentiation)* $d$ 用如下方法定义：
+我们用 $scr(D)^r (U)$ 表示开集 $U subset.eq M$ 上的全体 $r$-形式构成的向量空间，并约定 $scr(D)^0$ 就是 $U$ 上的光滑函数。再约定
+#nonum-equation($scr(D)(U) = plus.big_(r=0)^m scr(D)^r (U)$)
+这样每个 $scr(D)^r$ 是 $M$ 上的实向量空间层，也可以视为 $scr(O)_M$-模，这里 $scr(O)_M$ 表示 $M$ 上的光滑函数层：我们定义 $(f omega)_p = f(p) omega_p$。
+这样 $scr(D)$ 形成一个 $M$ 上的 $scr(O)_M$-代数。于是*外微分算子(exterior differentiation)* $d$ 用如下方法定义：
 
-+ $d$ 是从 $Omega$ 到其自身的层同态，作为 $RR$-线性映射，并且 $d(Omega^r) subset Omega^(r+1)$；
-+ 对每个函数 $f in Omega^0$，$d f$ 是全微分；
-+ 对于 $omega in Omega^r, eta in Omega^s$ 有 #nonum-equation($d(omega and eta) = d omega and eta + (-1)^r omega and d eta$)
++ $d$ 是从 $scr(D)$ 到其自身的层同态，作为 $RR$-线性映射，并且 $d(scr(D)^r) subset scr(D)^(r+1)$；
++ 对每个函数 $f in scr(D)^0$，$d f$ 是全微分；
++ 对于 $omega in scr(D)^r, eta in scr(D)^s$ 有 #nonum-equation($d(omega and eta) = d omega and eta + (-1)^r omega and d eta$)
 + $d^2 = 0$
 
 因此如果在局部表示下 $omega = sum_(1 <= i_1 < dots < i_r <= m) f_(i_1 dots i_r) d x^(i_1) and dots and d x^(i_r)$，那么
 $d omega = sum_(1 <= i_1 < dots < i_r <= m) d f_(i_1 dots i_r) and d x^(i_1) and dots and d x^(i_r)$。
 
 微分形式也可以是向量值，设 $V$ 是实 $n$-维向量空间，我们也用 $V$ 来表示 $M$ 上的 $V$-值局部常数层，于是 $V$-值 $r$-形式的层就是张量积
-$V times.circle Omega^r$，更具体说每个这样的形式 $omega$，在 $p in M$ 处是从 $T_p M times dots times T_p M$ 到 $V$ 的交错 $r$ 元线性映射。
+$V times.circle scr(D)^r$，更具体说每个这样的形式 $omega$，在 $p in M$ 处是从 $T_p M times dots times T_p M$ 到 $V$ 的交错 $r$ 元线性映射。
 如果 $V$ 有一组基 $e_1,dots, e_n$，那么每个 $omega$ 可以唯一写作 $sum_(i=1)^r omega^i e_i$，这里 $omega^i$ 就是通常的实值 $r$-形式。
 
 === 李括号的导数表示
