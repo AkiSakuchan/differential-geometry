@@ -7,6 +7,65 @@
 = 基础知识
 
 == 微分流形
+
+=== 微分形式
+设 $M$ 是光滑流形，则 $p in M$ 处的切空间 $T_p M$ 的对偶空间 $T_p^* M$ 中的元素称为在 $p$ 处的*余切向量*。
+余切向量实际上是从 $T_p M$ 到 $RR$ 的线性函数。
+
+设 $and.big T_p^* M$ 是 $T_p^* M$ 上的外代数，其中 $and.big^r T_p^* M$ 表示
+$r$ 次元素，注意到 $and.big^r T_p^* M tilde.equiv (and.big^r T_p M)^*$，所以这些元素实质上是从
+$T_p M times dots times T_p M$ 到 $RR$ 的交错线性函数。于是微分形式可以定义为：
+
+#definition(title: "微分形式")[
+  $M$ 上的一个 $r$-形式 $omega$ 满足对每个 $p in M$ 都有 $omega_p in and.big^r T_p^* M$。
+  显然若还有 $s$-形式 $eta$，则它们的外积是 $(r+s)$-形式，定义为 $(omega and eta)_p = omega_p and eta_p$。
+]
+
+设 $f$ 是定义在 $p$ 附近的光滑函数，那么它的*全微分(total differential)*，记为 $d f$，是一个 $1$-形式，定义为
+#nonum-equation[
+  $T_p M &--> RR \
+  X &mapsto.long  X f = angle.l (d f)_p , X angle.r$
+]
+如果 $p$ 附近有局部坐标系 $x^1, dots, x^m$，那么 $T_p M$ 具有基向量：
+#nonum-equation[
+  $(partial/(partial x^1))_p , dots, (partial/(partial x^m))_p$
+]
+于是在 $T_p^* M$ 中的对偶基就是坐标函数的全微分：$(d x^1)_p, dots, (d x^m)_p$；因此 $p$ 附近的 $1$-形式 $omega$ 可以唯一写作
+#nonum-equation[
+  $omega = sum_(i = 1)^m f_i d x^i$
+]
+这里 $f_i$ 是定义在 $p$ 附近的函数，称为 $omega$ 相对于 $x^i$ 的分量，如果采用 Einstein 求和约定的话，上式可以写作 $omega = f_i d x^i$。
+如果每个 $f_i$ 都是可微函数，那么 $omega$ 就称为微分 $1$-形式。
+
+上面的可以推广到 $r$-形式上。我们知道 $and.big^r T_p^* M$ 有一个基是 $d x^(i_1) and dots and d x^(i_r), i_1 < dots < i_r$，于是
+$r$-形式 $omega$ 在 $p$ 附近可以唯一写作
+#nonum-equation[
+  $omega = sum_(1 <= i_1 < dots < i_r <= m) f_(i_1 dots i_r) d x^(i_1) and dots and d x^(i_r)$
+]
+当每个分量 $f_(i_1 dots i_r)$ 可微时，$omega$ 就称为微分 $r$-形式。从这里开始，$r$-形式总是指微分形式。
+
+从定义可知 $r$-形式 $omega$ 在 $p$ 上是一个 $r$-元交错线性函数，而根据代数学知识，交错线性函数一定可以写作行列式#footnote[参见 @lane2023algebra[Ch.IX, Sec.4, Lemma 2] ]，
+更具体地说，如果 $omega = omega_1 and dots and omega_r$，这里 $omega_i$ 是 $1$-形式，那么对于 $X_j in T_p M, j=1, dots,r$ 有
+#nonum-equation($omega(X_1, dots, X_r) = det((omega_i (X_j))_(1<= i,j <= r))$)
+
+我们用 $Omega^r (U)$ 表示开集 $U subset.eq M$ 上的全体 $r$-形式构成的向量空间，并约定 $Omega^0$ 就是 $U$ 上的光滑函数。再约定
+#nonum-equation($Omega(U) = plus.big_(r=0)^m Omega^r (U)$)
+这样每个 $Omega^r$ 是 $M$ 上的实向量空间层，也可以视为 $scr(O)_M$-模，这里 $scr(O)_M$ 表示 $M$ 上的光滑函数层：我们定义 $(f omega)_p = f(p) omega_p$。
+这样 $Omega$ 形成一个 $M$ 上的 $scr(O)_M$-代数。于是*外微分算子(exterior differentiation)* $d$ 用如下方法定义：
+
++ $d$ 是从 $Omega$ 到其自身的层同态，作为 $RR$-线性映射，并且 $d(Omega^r) subset Omega^(r+1)$；
++ 对每个函数 $f in Omega^0$，$d f$ 是全微分；
++ 对于 $omega in Omega^r, eta in Omega^s$ 有 #nonum-equation($d(omega and eta) = d omega and eta + (-1)^r omega and d eta$)
++ $d^2 = 0$
+
+因此如果在局部表示下 $omega = sum_(1 <= i_1 < dots < i_r <= m) f_(i_1 dots i_r) d x^(i_1) and dots and d x^(i_r)$，那么
+$d omega = sum_(1 <= i_1 < dots < i_r <= m) d f_(i_1 dots i_r) and d x^(i_1) and dots and d x^(i_r)$。
+
+微分形式也可以是向量值，设 $V$ 是实 $n$-维向量空间，我们也用 $V$ 来表示 $M$ 上的 $V$-值局部常数层，于是 $V$-值 $r$-形式的层就是张量积
+$V times.circle Omega^r$，更具体说每个这样的形式 $omega$，在 $p in M$ 处是从 $T_p M times dots times T_p M$ 到 $V$ 的交错 $r$ 元线性映射。
+如果 $V$ 有一组基 $e_1,dots, e_n$，那么每个 $omega$ 可以唯一写作 $sum_(i=1)^r omega^i e_i$，这里 $omega^i$ 就是通常的实值 $r$-形式。
+
+=== 李括号的导数表示
 #proposition[
   设 $phi$ 是 $M$ 上的光滑自同胚。如果向量场 $X$ 生成的单参数变换群为 $phi_t$，那么
   $phi_* X$ 生成的单参数变换群是 $phi compose phi_t compose phi^(-1)$。
@@ -80,7 +139,8 @@
   充分性：从 $[X,Y] = 0$ 得到 $(d((phi_t)_* Y))/(d t) = 0$，因此 $(phi_t)_* Y$ 保持不变，于是 $psi_t$ 和 $phi_t$ 始终交换。
 ]
 
-== 李群作用
+== 李群
+=== 群作用
 设 $G$ 是李群，$M$ 是光滑流形，$G$ 光滑右作用在 $M$ 上，记为 $R_a: x mapsto x a$。
 我们说 $G$ 是*有效(effectively)*（或者*自由*)作用在 $M$ 上指的是对任意 $x in M$ （或者对某些 $x in M$）
 $R_a x = x$ 推得出 $a = 1$。
@@ -130,6 +190,15 @@ $R_a x = x$ 推得出 $a = 1$。
   如果 $sigma A = 0$，这意味着 $R_a_t$ 在 $M$ 上始终是单位映射。如果 $G$ 有效作用在 $M$ 上，那么就说明对任意 $t$ 有 $a_t = 1$，于是 $A=0$。
   如果 $sigma A$ 在某个 $x in M$ 处是零，这意味着 $R_a_t (x) = x$ 对任意 $t=0$ 成立。当 $G$ 自由作用在 $M$ 上，则 $a_t = 1$，于是 $A=0$。
 ]
+
+=== Maurer-Cartan 形式
+李群 $G$ 上的微分形式称为左不变的指的是对任意 $a in G$ 都有 $L_a^* omega = omega$。
+#definition(title: "Maurer-Cartan 形式")[
+  一个左不变 $frak(g)$-值 $1$-形式 $omega$ 如果满足对任意 $A in frak(g)$ 都有 $omega(A) = A$，那么就称为 *Maurer-Cartan 形式*。
+]
+这个定义是良定义的，实际上因为 $A in frak(g)$ 本身也是左不变的，所以
+$omega_a (A_a) = omega_a ((L_a)_* A_1) = (L_a^* omega)_1 (A_1) = omega_1 (A_1)= A$。
+同时它也是唯一的，因为对每个 $X in T_a G$，都有唯一一个 $A in frak(g)$ 使得 $A_a = X$，于是 $omega_a (X) = A$。
 
 == 纤维丛
 设 $G$ 是李群，$M$ 是光滑流形，$pi : P -> M$ 是 $G$-主丛。由于 $G$ 自由作用在 $P$ 上，于是根据 @李代数到基本向量场的同态和性质 可知，
