@@ -6,4 +6,6 @@
 
 #show: rest => book(title: [微分几何], authors: "Aki Sakuchan", bib-file: "references.bib" ,rest)
 
+#include "基础知识.typ"
+
 #include "联络.typ"
