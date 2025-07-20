@@ -31,7 +31,7 @@ $omega(X)$ 是这个唯一的 $A in frak(g)$ 使得 $A^*_u = v X$，也就是说
 #proposition[
   联络形式 $omega$ 满足下列条件：
   + $omega(A^*) = A$
-  + 对任意 $a in G$ 有 $R_a^* omega = "Ad"_(a^(-1)) compose omega$
+  + 对任意 $a in G$ 有 $R_a^* omega = "Ad"(a^(-1)) omega$
 
   反过来，如果 $P$ 上的一个 $frak(g)$-值 $1$-形式满足上述两个条件，那么存在唯一一个联络 $Omega$ 使得它的联络形式就是 $omega$。
 ]<联络等价于联络形式>
@@ -50,3 +50,53 @@ $omega(X)$ 是这个唯一的 $A in frak(g)$ 使得 $A^*_u = v X$，也就是说
 现在设 ${U_alpha}$ 是 $M$ 上的一组开覆盖，并且 $P$ 在每个开集 $U_alpha$ 上有局部平凡化
 $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函数为 $psi_(alpha beta) : U_alpha inter U_beta -> G$。
 对每个 $alpha$，$sigma_alpha$ 是 $U_alpha$ 上的截面 $sigma_alpha (x) = psi_alpha^(-1)(x,1)$，也就是恒一截面。
+设 $theta$ 是 $G$ 上的 Maurer-Cartan 形式。在每个非空 $U_alpha inter U_beta$ 上定义 $frak(g)$-值 $1$-形式
+#nonum-equation($theta_(alpha beta) = psi_(alpha beta)^* theta$)
+对每个 $alpha$，定义 $U_alpha$ 上的 $frak(g)$-值 $1$-形式
+#nonum-equation($omega_alpha = sigma_alpha^* omega$)
+现在可以把联络形式 $omega$ 用一组 $U_alpha$ 上的形式来表示：
+
+#proposition[
+  这组形式 ${theta_(alpha beta)}$ 和 ${omega_alpha}$ 满足对任意 $alpha,beta$ 在非空 $U_alpha inter U_beta$ 上有
+  #nonum-equation($omega_beta = "Ad"(psi_(alpha beta)^(-1)) omega_alpha + theta_(alpha beta)$)
+  反过来如果一组 $frak(g)$-值 $1$-形式 ${omega_alpha}$ 分别定义在 $U_alpha$ 上，并且满足上述条件，那么存在唯一一个联络形式
+  $omega$ 使得 $omega_alpha = sigma_alpha^* omega$。
+]
+#proof[
+  根据上面的定义，$sigma_beta (x) = sigma_alpha (x) psi_(alpha beta)(x)$，这里 $psi_(alpha beta)$ 是从
+  $U_beta$ 到 $U_alpha$ 的转移函数。设 $u = sigma_beta (x),u'=sigma_alpha (x), a = psi_(alpha beta)(x)$。
+  对映射 $m:P times G -> P$ 使用 @Leibniz法则[Leibniz 法则] 可得，这个映射在 $(u',a) in P times G$ 处为：
+  #nonum-equation($m_*(X,Y) = R_(a*)(X) + L_(u' *)(Y), quad X in T_u' P, Y in T_a G$)
+  这里 $L_u':G->P$ 是 $g mapsto u'g$。 对于 $X in T_x M$ 时 $sigma_(alpha*)(X) in T_u' P, psi_(alpha beta *)(X) in T_a G$ 就有
+  #nonum-equation[
+    $sigma_(beta *)(X) = R_(a*)(sigma_(alpha*)(X)) + L_(u'*)(psi_(alpha beta *)(X))$
+  ]
+  把 $omega$ 应用在上式，并使用 @联络等价于联络形式 得到：
+  #nonum-equation[
+    $omega_beta (X) &= omega(R_(a*)(sigma_(alpha*)(X))) + omega(L_(u'*)(psi_(alpha beta *)(X))) \
+    &= (R_a^* omega)(sigma_(alpha*)(X)) + omega(L_(u'*)(psi_(alpha beta *)(X))) \
+    &= "Ad"(psi_(alpha beta)^(-1)) omega_alpha (X) + omega(L_(u'*)(psi_(alpha beta *)(X)))$
+  ]
+
+  对于最后一项，我们注意到对任意 $A in frak(g)$，它在任意点 $a in G$ 处的积分曲线是 $a e^(t A)$，于是
+  $L_u'(a e^(t A)) = u'a e^(t A)$ 在 $t=0$ 处的导数正是 $A^*_(u'a)$。因此对于 $A = psi_(alpha beta *)(X)$ 有
+  #nonum-equation($omega(L_(u'*)(psi_(alpha beta *)(X))) = omega(A^*_(u'a)) = A = theta(A) = 
+  theta(psi_(alpha beta *)(X)) = theta_(alpha beta)(X)$)
+  这样我们就证明了 $omega_beta = "Ad"(psi_(alpha beta)^(-1)) omega_alpha + theta_(alpha beta)$。
+
+  反过来，如果有一组 ${omega_alpha}$ 满足上述条件。
+]
+
+#corollary[
+  当 $G$ 是 $"GL"(KK)$ 的李子群时，这里 $KK = RR$ 或者 $CC$，也就是说 $G$ 是矩阵李群时，联络形式的局部表现之间的关系可以写成：
+  #nonum-equation($omega_beta = psi_(alpha beta)^(-1) dot omega_alpha dot psi_(alpha beta) + psi_(alpha beta)^(-1) dot d psi_(alpha beta)$)
+]
+
+#lemma(title: "Leibniz 法则")[
+  设 $f$ 是从积流形 $M times N$ 到另一个流形 $V$ 的映射，那么 $f_* : T_((p,q))(M times N) -> T_f(p,q) V$ 可以表示为：
+  如果 $Z in T_((p,q))(M times N)$ 对应到 $(X,Y) in T_p M times T_q N$，那么 $f_*(Z) = f_(1*)(X) + f_(2*)(Y)$，
+  这里 $f_1:M->V$ 是 $x mapsto f(x,q)$，而 $f_2:N -> V$ 是 $y mapsto f(p,y)$。
+]<Leibniz法则>
+#proof[
+  只用考虑 $M,N,V$ 都是欧式空间的情况。这个命题可直接通过 Jacobi 矩阵来验证。
+]
