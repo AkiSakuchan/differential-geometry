@@ -47,6 +47,11 @@ $omega(X)$ 是这个唯一的 $A in frak(g)$ 使得 $A^*_u = v X$，也就是说
   并可以验证前面的部分属于 $Q_u$，后面的部分当然属于 $G_u$；而 $Q_u inter G_u = {0}$ 直接从条件 1 得到。
 ]
 
+$pi: P -> M$ 诱导一个线性映射 $pi_* : T_u P -> T_p M$，这里 $p = pi(u)$。如果给出一个联络，那么 $pi_*$ 限制在 $Q_u$ 上是一个到
+$T_p M$ 的同构：可以验证 $pi_*(G_u) = {0}$，于是 $pi_*|Q_u$ 是到 $T_p M$ 的满射，再考虑到 $dim Q_u = dim P - dim G_u = dim P - dim G = dim M$，
+因此 $pi_*|Q_u$ 是同构。如此一来对 $M$ 上的任意向量场 $X$，都有唯一一个 $P$ 上的水平向量场 $X^*$ 使得 $pi_*(X^*) = X$，
+这个 $X^*$ 称为 $X$ 的*水平提升*，或者简称为提升。
+
 现在设 ${U_alpha}$ 是 $M$ 上的一组开覆盖，并且 $P$ 在每个开集 $U_alpha$ 上有局部平凡化
 $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函数为 $psi_(alpha beta) : U_alpha inter U_beta -> G$。
 对每个 $alpha$，$sigma_alpha$ 是 $U_alpha$ 上的截面 $sigma_alpha (x) = psi_alpha^(-1)(x,1)$，也就是恒一截面。
@@ -84,7 +89,55 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
   theta(psi_(alpha beta *)(X)) = theta_(alpha beta)(X)$)
   这样我们就证明了 $omega_beta = "Ad"(psi_(alpha beta)^(-1)) omega_alpha + theta_(alpha beta)$。
 
-  反过来，如果有一组 ${omega_alpha}$ 满足上述条件。
+  反过来，如果有一组 ${omega_alpha}$ 满足上述条件。我们要构造一个联络形式 $omega$：对任意 $X in T_u P$，通过
+  $psi_alpha : pi^(-1)(U_alpha) ->^tilde U_alpha times G$ 对应唯一一个 $(Y,Z) in T_p M plus.circle T_a G$。
+  因此
+  #nonum-equation[
+    $omega(X) = omega(psi_(alpha*)^(-1)(Y,Z)) = omega(psi_(alpha*)^(-1)(Y,0)) + omega(psi_(alpha*)^(-1)(0,Z))$
+  ]
+  由于 $psi_alpha$ 是右 $G$-映射，因此 $psi_alpha^(-1) = R_a compose psi_alpha^(-1) compose R_(a^(-1))$，
+  而 $(psi_alpha^(-1) compose R_(a^(-1)))_*(Y,0) = sigma_(alpha*)(Y)$，因此
+  #nonum-equation[
+    $omega(psi_(alpha*)^(-1)(Y,0)) = omega(R_(a*) sigma_(alpha*)(Y)) = "Ad"(a^(-1)) omega_alpha (Y) = "Ad"(a^(-1)) omega_alpha (pi_* X)$
+  ]
+  设 $A in frak(g)$ 使得 $A_a = Z$。那么 $Z$ 在 $a in G$ 处的积分曲线是 $a e^(t A)$，于是 $psi_(alpha*)^(-1)(0,Z)$ 是
+  $psi_alpha^(-1)(p, a e^(t A)) = u e^(t A)$ 在 $t=0$ 处的导数，也就是 $A^*_u$，这样 
+  #nonum-equation[
+    $omega(psi_(alpha*)^(-1)(0,Z)) = A = theta(Z) = theta(phi_(alpha*)(X))$
+  ]
+  这里 $phi_alpha = "pr"_2 compose psi_alpha$。因此 $omega$ 如果在 $U_alpha$ 上满足 $omega_alpha = sigma_alpha^* omega$，那么在
+  $U_alpha$ 上 $omega$ 必然有形式
+  #nonum-equation[
+    $omega = "Ad"(phi_alpha^(-1)) pi^* omega_alpha + phi_alpha^* theta$
+  ]
+  这样就证明了联络形式的唯一性。至于存在性，只需要验证上式是良定义即可，为此设 $u in pi^(-1)(U_alpha inter U_beta)$。于是有
+  #nonum-equation[
+    $& quad "Ad"(phi_alpha (u)^(-1)) pi^* omega_alpha (X) + phi_alpha^* theta(X) \
+    &= "Ad"(phi_alpha (u)^(-1))lr(( "Ad"(psi_(alpha beta)(p)) omega_beta (pi_* X) + theta_(beta alpha)(pi_* X) ), size: #150%) + theta(phi_(alpha*) X) \
+    &= "Ad"(phi_beta (u)^(-1)) pi^* omega_beta (X) + "Ad"(phi_alpha (u)^(-1)) theta_(beta alpha)(pi_* X) + theta(phi_(alpha*) X) $
+  ]
+  现在像前面一样，对 $phi_beta = (psi_(beta alpha) compose pi) dot phi_alpha$ 和李群乘法使用 Leibniz 法则就有
+  #nonum-equation[
+    $phi_(beta*)(X) = (R_(phi_alpha (u)))_* (psi_(beta alpha))_* pi_* X + (L_(psi_(beta alpha)(p)))_* (phi_alpha)_* X  $
+  ]
+  考虑到 $theta$ 左不变，因此
+  #nonum-equation($theta((L_(psi_(beta alpha)(p)))_* (phi_alpha)_* X) = theta(phi_(alpha *) X)$)
+  注意在 @李代数到基本向量场的同态和性质 的证明里面我们用到了性质 $"Ad"_a = (R_(a^(-1)))_*$，因此如果把
+  $(psi_(beta alpha))_* pi_* X$ 视为某个 $A in frak(g)$ 在 $psi_(beta alpha)(p)$ 处的切向量的话，就有
+  #nonum-equation[
+    $& quad theta((R_(phi_alpha (u)))_* (psi_(beta alpha))_* pi_* X) 
+    = theta_(phi_beta(u))("Ad"(phi_alpha (u)^(-1)) A) \
+    &= "Ad"(phi_alpha (u)^(-1)) A
+    = "Ad"(phi_alpha (u)^(-1)) theta((psi_(beta alpha))_* pi_* X) \
+    &= "Ad"(phi_alpha (u)^(-1)) theta_(beta alpha)(pi_* X)$
+  ]
+  于是
+  #nonum-equation[
+    $"Ad"(phi_alpha (u)^(-1)) pi^* omega_alpha (X) + phi_alpha^* theta(X) 
+    &= "Ad"(phi_beta (u)^(-1)) pi^* omega_beta (X) + theta(phi_(beta*)(X)) \ 
+    &= "Ad"(phi_beta (u)^(-1)) pi^* omega_beta (X) + phi_beta^* theta(X)$
+  ]
+  这样就证明了良定义。
 ]
 
 #corollary[
