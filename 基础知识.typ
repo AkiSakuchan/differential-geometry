@@ -194,11 +194,28 @@ $R_a x = x$ 推得出 $a = 1$。
 === Maurer-Cartan 形式
 李群 $G$ 上的微分形式称为左不变的指的是对任意 $a in G$ 都有 $L_a^* omega = omega$。
 #definition(title: "Maurer-Cartan 形式")[
-  一个左不变 $frak(g)$-值 $1$-形式 $omega$ 如果满足对任意 $A in frak(g)$ 都有 $omega(A) = A$，那么就称为 *Maurer-Cartan 形式*。
+  一个左不变 $frak(g)$-值 $1$-形式 $theta$ 如果满足对任意 $A in frak(g)$ 都有 $theta(A) = A$，那么就称为 *Maurer-Cartan 形式*。
 ]
 这个定义是良定义的，实际上因为 $A in frak(g)$ 本身也是左不变的，所以
-$omega_a (A_a) = omega_a ((L_a)_* A_1) = (L_a^* omega)_1 (A_1) = omega_1 (A_1)= A$。
-同时它也是唯一的，因为对每个 $X in T_a G$，都有唯一一个 $A in frak(g)$ 使得 $A_a = X$，于是 $omega_a (X) = A$。
+$theta_a (A_a) = theta_a ((L_a)_* A_1) = (L_a^* theta)_1 (A_1) = theta_1 (A_1)= A$。
+同时它也是唯一的，因为对每个 $X in T_a G$，都有唯一一个 $A in frak(g)$ 使得 $A_a = X$，于是 $theta_a (X) = A$。
+
+如果考虑到 $T_1 G$ 和 $frak(g)$ 同构，那么对任意 $X in T_a G$，可以定义 $theta_a (X) = (L_(a^(-1)))_* X$，这样有：
+
+#proposition[
+  设 $M$ 是光滑流形，$f : M -> "GL"(n,RR)$ 是光滑映射，$theta$ 是 $"GL"(n,RR)$ 的 Maurer-Cartan 形式。
+  那么 $f^* theta = f^(-1) d f$，这里 $phi^(-1)$ 表示值的逆矩阵。
+
+  特别地，对于矩阵李群 $G$，也就是 $G$ 是一般线性群的李子群时，$G$ 的 Maurer-Cartan 可以表示为 $theta_g = g^(-1) d g$。
+]
+#proof[
+  对任意 $X in T_p M$，有
+  #nonum-equation[
+    $f^* theta(X) &= theta(f_* X) = (L_(f(p)^(-1)))_* f_* X 
+    = L_(f(p)^(-1)) d( f(gamma(t)) )/(d t) stretch(|, size: #230%)_(t = 0) = f(p)^(-1) d f(X)$
+  ]
+  这里 $gamma(t)$ 是 $X$ 的积分曲线，另外注意到在一般线性群当中，$(L_a)_* = L_a$。
+]
 
 == 纤维丛
 设 $G$ 是李群，$M$ 是光滑流形，$pi : P -> M$ 是 $G$-主丛。由于 $G$ 自由作用在 $P$ 上，于是根据 @李代数到基本向量场的同态和性质 可知，
