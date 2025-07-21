@@ -153,3 +153,18 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
 #proof[
   只用考虑 $M,N,V$ 都是欧式空间的情况。这个命题可直接通过 Jacobi 矩阵来验证。
 ]
+
+== 曲率形式和结构方程
+设 $G$ 是李群，$pi : P -> M$ 是 $G$-主丛，$rho : G -> "GL"(V)$ 是 $G$ 在有限维向量空间 $V$ 上的表示。
+于是 $P$ 上的一个 $(rho,V)$-型*伪张量形式(pseudotensorial form)*指的是一个 $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
+#nonum-equation($R_a^* phi = rho(a^(-1)) dot phi$)
+也就是说这个 $phi$ 和 $G$ 在 $V$ 上的作用可以交换。一个这样的形式，如果是水平的，也就是说当 $X_1,dots, X_r in T_u P$ 中任意一个是垂直切向量时
+就有 $phi(X_1, dots, X_r) = 0$，那么 $phi$ 就称为*张量形式*。张量形式在每个点上是 $and.big^r Q_u$ 的对偶空间的元素。
+
+#example(title: "平凡表示的情况")[
+  当 $rho_0$ 是 $G$ 的平凡表示时，张量形式 $phi$ 满足 $R_a^* phi = phi$。此时注意到 $pi_*|Q_u$ 是到 $T_p M$ 的同构，因此对任意
+  $Y in T_p M$ 都有 $X_u in T_u P$ 使得 $pi_* X_u = Y$，对于不同的 $u in pi^(-1)(p)$，不同的 $X_u$ 相差一个 $R_(a*)$，因此
+  $phi_M (Y)$ 定义为 $phi(X_u)$ 将是良定义；并且此时 $phi = pi^* phi_M$。这个 $phi_M$ 将是唯一的。
+]
+
+如果 $E = P times_rho V$ 是 $P$ 的联系向量丛。
