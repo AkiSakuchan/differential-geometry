@@ -236,3 +236,19 @@ $theta_a (A_a) = theta_a ((L_a)_* A_1) = (L_a^* theta)_1 (A_1) = theta_1 (A_1)= 
   因此 $(R_a)_* A^*$ 是对应于 $"Ad"_(a^(-1))(A) in frak(g)$ 的基本向量场。
 ]
 
+设 $G$ 是拓扑群，$M$ 是拓扑空间，$pi: P -> M$ 是 $G$-主丛，$F$ 是拓扑空间并且 $G$ 右作用在 $F$ 上。在 $P times F$ 上定义一个 $G$-作用：
+#nonum-equation($a dot (u,xi) mapsto.long (u a, a^(-1) xi)$)
+在这个作用下，$P times F$ 的商记为 $E=P times_G F$，如果 $F$ 是向量空间而 $G$ 在 $F$ 上有表示 $rho$，那么也记为 $P times_rho F$。
+标准投射 $P times F -> P$ 和 $G$ 作用相容，因此诱导映射 $pi_E : E -> M$。而在 $U subset M$ 上的局部平凡化
+$pi^(-1)(U) tilde.equiv U times G$ 也将产生映射
+#nonum-equation[
+  $pi_E^(-1)(U) = pi^(-1)(U) times_G F tilde.equiv (U times G) times_G F$
+]
+而后者与 $U times F$ 同胚：$[(x,a),xi] mapsto (u,a xi)$。
+因此 $E$ 是一个纤维丛，标准纤维是 $F$，结构群是 $G$，变换函数与 $P$ 的变换函数相同，这个纤维丛称为 $P$ 的*联系丛*。
+
+#proposition[
+  对于 $u in P$，通过 $xi mapsto [u,xi]$ 把 $u$ 视为从 $F$ 到 $E$ 的映射。那么 $u$ 实际上是从 $F$ 到 $E_x = pi_E^(-1)(x)$ 的双射，
+  这里 $x = pi(u)$，并且对任意 $a in G$ 有
+  #nonum-equation($(u a)(xi) = u(a xi)$)
+]<主丛元素视为从标准纤维到任意纤维的同构>
