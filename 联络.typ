@@ -164,7 +164,8 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
 于是 $P$ 上的一个 $(rho,V)$-型*伪张量形式(pseudotensorial form)*指的是一个 $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
 #nonum-equation($R_a^* phi = rho(a^(-1)) phi$)
 也就是说这个 $phi$ 和 $G$ 在 $V$ 上的作用可以交换。一个这样的形式，如果是水平的，也就是说当 $X_1,dots, X_r in T_u P$ 中任意一个是垂直切向量时
-就有 $phi(X_1, dots, X_r) = 0$，那么 $phi$ 就称为*张量形式*。张量形式在每个点上是 $and.big^r Q_u$ 的对偶空间的元素。
+就有 $phi(X_1, dots, X_r) = 0$，那么 $phi$ 就称为*张量形式*，它组成的层记为 $scr(D)^r(rho,P)$
+张量形式在每个点上是 $and.big^r Q_u$ 的对偶空间的元素。
 
 #example(title: "平凡表示的情况")[
   当 $rho_0$ 是 $G$ 的平凡表示时，张量形式 $phi$ 满足 $R_a^* phi = phi$。此时注意到 $pi_*|Q_u$ 是到 $T_p M$ 的同构，因此对任意
@@ -181,7 +182,7 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
   反过来，如果给定一个 $M$ 上的 $E$-值 $r$-形式 $tilde(phi)$，那么下列定义的微分形式是 $(rho,V)$-型的 $r$-张量形式：对任意 $X^*_1, dots, X^*_r in T_u P$
   #nonum-equation($phi (X^*_1, dots, X^*_r) = u^(-1)(tilde(phi)_x (pi_* X^*_1, dots, pi_* X^*_r))$)
   并且是上述 $phi mapsto tilde(phi)$ 的逆映射。
-]
+]<主丛张量形式与联系丛形式同构>
 #proof[
   首先 $tilde(phi)$ 是良定义: 满足 $pi_* X^*'_i = pi_* X^*_i$ 的 $X^*'_i in T_u P$ 必然有 $pi_*(X^*'_i - X^*_i) = 0$，
   也就是说 $X^*'_i - X^*_i$ 是垂直的，这样由于 $phi$ 是水平的，因此同一个 $u in P$，$phi_x$ 的定义与 $X^*_i$ 的选择无关。
@@ -229,3 +230,19 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
   联络形式 $omega$ 是 $"ad" G$ 型的伪张量形式（@联络等价于联络形式），于是 $D omega$ 是 $"ad" G$ 型的 $2$-张量形式，称为 $omega$ 的*曲率形式*，
   用 $Omega$ 表示。
 ]
+
+#proposition[
+  假设 $V$ 是一个代数，又有 $(rho,V)$-型的张量形式 $omega,eta$ 那么
+  #nonum-equation($D(omega and eta) = D omega and eta + (-1)^(deg omega) omega and D eta$)
+]
+#proof[
+  参见 @tu2017differential[Prop.31.6]，实际上根据 @向量值微分形式乘积的具体表示 然后直接验证即可。
+]
+
+若 $V$ 是代数，那么可以诱导 $E_x$ 也变成 代数，于是 $u : V -> E_x$ 就是代数同构，这样可以验证：
+#proposition[
+  在 @主丛张量形式与联系丛形式同构 的同构下，主丛上的协变求导 $D$ 诱导一个算子：
+  #nonum-equation($D: scr(D)^r (E) --> scr(D)^(r+1) (E)$)
+  这个算子是 $E$ 上的协变导数。
+]
+根据这个命题，主丛联络诱导它的联系向量丛上的联络。
