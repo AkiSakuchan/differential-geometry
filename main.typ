@@ -8,4 +8,6 @@
 
 #include "基础知识.typ"
 
+#include "向量丛联络.typ"
+
 #include "联络.typ"
