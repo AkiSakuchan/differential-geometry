@@ -11,7 +11,7 @@
 称为 $u$ 处的*垂直子空间*，记为 $G_u$。
 
 #definition(title: "联络")[
-  $P$ 上的一个*联络* $Omega$ 是一个函数 $u mapsto Q_u$，这里 $Q_u$ 是 $T_u P$ 的子空间，称为*水平子空间*，这个函数要满足：
+  $P$ 上的一个*联络* $Gamma$ 是一个函数 $u mapsto Q_u$，这里 $Q_u$ 是 $T_u P$ 的子空间，称为*水平子空间*，这个函数要满足：
   #enum(numbering: "(a)")[
     $T_u P = G_u plus.circle Q_u$
   ][
@@ -26,14 +26,14 @@
 
 前面已经知道 $A mapsto A^*_u$ 是从 $frak(g)$ 到 $G_u$ 的同构。因此对每个 $X in T_u P$ 定义
 $omega(X)$ 是这个唯一的 $A in frak(g)$ 使得 $A^*_u = v X$，也就是说把 $X$ 的垂直分量和 $frak(g)$ 里面的元素等同起来。
-显然 $omega(X) = 0$ 当且仅当 $X$ 是水平的。这样 $omega$ 就是 $P$ 上的 $frak(g)$-值 $1$-形式，我们称为联络 $Omega$ 的*联络形式*。
+显然 $omega(X) = 0$ 当且仅当 $X$ 是水平的。这样 $omega$ 就是 $P$ 上的 $frak(g)$-值 $1$-形式，我们称为联络 $Gamma$ 的*联络形式*。
 
 #proposition[
   联络形式 $omega$ 满足下列条件：
   + $omega(A^*) = A$
   + 对任意 $a in G$ 有 $R_a^* omega = "Ad"(a^(-1)) omega$
 
-  反过来，如果 $P$ 上的一个 $frak(g)$-值 $1$-形式满足上述两个条件，那么存在唯一一个联络 $Omega$ 使得它的联络形式就是 $omega$。
+  反过来，如果 $P$ 上的一个 $frak(g)$-值 $1$-形式满足上述两个条件，那么存在唯一一个联络 $Gamma$ 使得它的联络形式就是 $omega$。
 ]<联络等价于联络形式>
 #proof[
   具体参见 @kobayashi1963foundations[Ch.2, Prop.1.1]。简单来说条件 1 直接来自于联络形式的定义，条件 2 通过分别考虑
@@ -51,6 +51,11 @@ $pi: P -> M$ 诱导一个线性映射 $pi_* : T_u P -> T_p M$，这里 $p = pi(u
 $T_p M$ 的同构：可以验证 $pi_*(G_u) = {0}$，于是 $pi_*|Q_u$ 是到 $T_p M$ 的满射，再考虑到 $dim Q_u = dim P - dim G_u = dim P - dim G = dim M$，
 因此 $pi_*|Q_u$ 是同构。如此一来对 $M$ 上的任意向量场 $X$，都有唯一一个 $P$ 上的水平向量场 $X^*$ 使得 $pi_*(X^*) = X$，
 这个 $X^*$ 称为 $X$ 的*水平提升*，或者简称为提升。
+
+#proposition[
+  对任意 $M$ 上的向量场 $X$，存在唯一水平提升 $X^*$。这个 $X^*$ 对任意 $a in G$ 都在 $R_a$ 下保持不变。
+  反过来每个 $P$ 上的水平向量场 $X^*$ 如果被 $G$ 保持不变，那么它是 $M$ 上某个向量场 $X$ 的水平提升。
+]<向量场水平提升的特征>
 
 现在设 ${U_alpha}$ 是 $M$ 上的一组开覆盖，并且 $P$ 在每个开集 $U_alpha$ 上有局部平凡化
 $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函数为 $psi_(alpha beta) : U_alpha inter U_beta -> G$。
@@ -157,7 +162,7 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
 == 曲率形式和结构方程
 设 $G$ 是李群，$pi : P -> M$ 是 $G$-主丛，$rho : G -> "GL"(V)$ 是 $G$ 在有限维向量空间 $V$ 上的表示。
 于是 $P$ 上的一个 $(rho,V)$-型*伪张量形式(pseudotensorial form)*指的是一个 $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
-#nonum-equation($R_a^* phi = rho(a^(-1)) dot phi$)
+#nonum-equation($R_a^* phi = rho(a^(-1)) phi$)
 也就是说这个 $phi$ 和 $G$ 在 $V$ 上的作用可以交换。一个这样的形式，如果是水平的，也就是说当 $X_1,dots, X_r in T_u P$ 中任意一个是垂直切向量时
 就有 $phi(X_1, dots, X_r) = 0$，那么 $phi$ 就称为*张量形式*。张量形式在每个点上是 $and.big^r Q_u$ 的对偶空间的元素。
 
@@ -167,4 +172,60 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
   $phi_M (Y)$ 定义为 $phi(X_u)$ 将是良定义；并且此时 $phi = pi^* phi_M$。这个 $phi_M$ 将是唯一的。
 ]
 
-如果 $E = P times_rho V$ 是 $P$ 的联系向量丛。
+#proposition[
+  $E = P times_rho V$ 是 $P$ 的联系向量丛，$phi$ 是 $(rho,V)$-型的张量 $r$-形式，那么下列定义是良定义：对任意 $X_1, dots, X_r in T_x M$
+  #nonum-equation($tilde(phi)_x (X_1, dots, X_r) = u(phi(X_1^*, dots, X_r^*))$)
+  这里 $pi(u) = x$，$X_i^* in T_u P$ 使得 $pi_* X_i^* = X_i$；这里还把 $u$ 看成从 $V$ 到纤维 $E_x$ 的线性映射（参见 @主丛元素视为从标准纤维到任意纤维的同构）。
+  $tilde(phi)$ 是 $M$ 上一个 $E$-值 $r$ 形式，$phi mapsto tilde(phi)$ 是从 $P$ 上的 $(rho,V)$-型张量形式到 $M$ 上的微分形式的线性同构。
+
+  反过来，如果给定一个 $M$ 上的 $E$-值 $r$-形式 $tilde(phi)$，那么下列定义的微分形式是 $(rho,V)$-型的 $r$-张量形式：对任意 $X^*_1, dots, X^*_r in T_u P$
+  #nonum-equation($phi (X^*_1, dots, X^*_r) = u^(-1)(tilde(phi)_x (pi_* X^*_1, dots, pi_* X^*_r))$)
+  并且是上述 $phi mapsto tilde(phi)$ 的逆映射。
+]
+#proof[
+  首先 $tilde(phi)$ 是良定义: 满足 $pi_* X^*'_i = pi_* X^*_i$ 的 $X^*'_i in T_u P$ 必然有 $pi_*(X^*'_i - X^*_i) = 0$，
+  也就是说 $X^*'_i - X^*_i$ 是垂直的，这样由于 $phi$ 是水平的，因此同一个 $u in P$，$phi_x$ 的定义与 $X^*_i$ 的选择无关。
+  当 $u$ 变为 $u a$ 时，由于 $pi compose R_a = pi$，因此 $pi_*(R_(a*) X^*_i) = X_i$，并且 $R_(a*)X^*_i in T_(u a) P$，然后容易看到
+  #nonum-equation[
+    $(u a) phi(R_(a*)X^*_1, dots, R_(a*)X^*_r) = u(phi(X_1^*, dots, X_r^*))$
+  ]
+  上面已经证明了和 $X^*_i$ 的选择无关，于是 $tilde(phi)$ 是良定义。
+
+  反过来，如果有任何一个 $X^*_i$ 是垂直的，那么显然 $pi_* X^*_i = 0$，上面定义的 $phi_x (X^*_1, dots, X^*_r) = 0$。
+  若有 $a in G$，那么设 $X_i = pi_* X^*_i$，于是不难看到
+  #nonum-equation($R_a^* phi(X^*_1, dots, X^*_r) = phi(R_(a*) X^*_1, dots, R_(a*) X^*_r) = (u a)^(-1)(tilde(phi)_x (X_1, dots, X_r))$)
+  注意 $u: xi mapsto [u, xi]$，现在 $[u,xi]$ 是不变的，但是 $u$ 变成了 $u a$，因此 $xi$ 必然变成 $a^(-1) xi$，所以上式最后等于
+  $rho(a^(-1)) u^(-1)(tilde(phi)_x (X_1, dots, X_r))$。
+
+  最后它们互为逆映射，以及是线性映射很容易验证。
+]
+
+#corollary[
+  满足 $f(u a) = rho(a^(-1)) f(u)$ 的映射 $f:P -> V$ 和 $E$ 的截面一一对应。 
+]
+
+
+#proposition[
+  设 $Gamma$ 是 $P$ 上的联络，$Q_u$ 是 $T_u P$ 的水平子空间，$h:T_u P -> Q_u$ 是水平投射。
+  如果 $phi$ 是 $(rho,V)$-型的伪张量 $r$-形式，那么
+  + 通过 $(phi h)(X_1, dots, X_r) = phi(h X_1, dots, h X_r), X_i in T_u P$ 定义的 $phi h$ 是 $(rho,V)$-型的张量 $r$-形式；
+  + $d phi$ 是 $(rho,V)$-型的伪张量 $(r+1)$-形式；
+  + $D phi = (d phi)h$ 是 $(rho,V)$-型的张量 $(r+1)$-形式
+]
+#proof[
+  不难验证对任意 $a in G$ 有 $R_(a*) compose h = h compose R_(a*)$ 进而有
+  #nonum-equation[
+    $R_a^* (phi h)(X_1, dots, X_r) &= phi(h R_(a*) X_1, dots, h R_(a*) X_r) \ 
+    &= phi(R_(a*) h X_1, dots, R_(a*) h X_r) \
+    &= rho(a^(-1)) (phi h)(X_1, dots, X_r) $
+  ]
+  因此 $(phi h)$ 是伪张量形式，而它显然是水平的。命题 2 来自于 $R_a^* compose d = d compose R_a^*$。命题 3 是前两个的推论。
+]
+
+#definition(title: "协变导数，曲率形式")[
+  $D phi$ 称为 $phi$ 的*协变导数*，$D$ 称为*协变求导算子*。
+
+  如果 $rho = "ad":G -> "GL"(frak(g))$ 是 $G$ 的伴随表示，则 $("ad",frak(g))$-型记为 $"ad" G$ 型。
+  联络形式 $omega$ 是 $"ad" G$ 型的伪张量形式（@联络等价于联络形式），于是 $D omega$ 是 $"ad" G$ 型的 $2$-张量形式，称为 $omega$ 的*曲率形式*，
+  用 $Omega$ 表示。
+]
