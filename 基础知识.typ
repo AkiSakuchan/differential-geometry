@@ -46,7 +46,7 @@ $r$-形式 $omega$ 在 $p$ 附近可以唯一写作
 
 从定义可知 $r$-形式 $omega$ 在 $p$ 上是一个 $r$-元交错线性函数，而根据代数学知识，交错线性函数一定可以写作行列式#footnote[参见 @lane2023algebra[Ch.IX, Sec.4, Lemma 2] ]，
 更具体地说，如果 $omega = omega_1 and dots and omega_r$，这里 $omega_i$ 是 $1$-形式，那么对于 $X_j in T_p M, j=1, dots,r$ 有
-#nonum-equation($omega(X_1, dots, X_r) = det((omega_i (X_j))_(1<= i,j <= r))$)
+#nonum-equation($omega(X_1, dots, X_r) = 1/r! det((omega_i (X_j))_(1<= i,j <= r))$)
 
 我们用 $scr(D)^r (U)$ 表示开集 $U subset.eq M$ 上的全体 $r$-形式构成的向量空间，并约定 $scr(D)^0$ 就是 $U$ 上的光滑函数。再约定
 #nonum-equation($scr(D)(U) = plus.big_(r=0)^m scr(D)^r (U)$)
@@ -62,8 +62,42 @@ $r$-形式 $omega$ 在 $p$ 附近可以唯一写作
 $d omega = sum_(1 <= i_1 < dots < i_r <= m) d f_(i_1 dots i_r) and d x^(i_1) and dots and d x^(i_r)$。
 
 微分形式也可以是向量值，设 $V$ 是实 $n$-维向量空间，我们也用 $V$ 来表示 $M$ 上的 $V$-值局部常数层，于是 $V$-值 $r$-形式的层就是张量积
-$V times.circle scr(D)^r$，更具体说每个这样的形式 $omega$，在 $p in M$ 处是从 $T_p M times dots times T_p M$ 到 $V$ 的交错 $r$ 元线性映射。
+$scr(D)^r (V) = V times.circle scr(D)^r$，更具体说每个这样的形式 $omega$，在 $p in M$ 处是从 $T_p M times dots times T_p M$ 到 $V$ 的交错 $r$ 元线性映射。
 如果 $V$ 有一组基 $e_1,dots, e_n$，那么每个 $omega$ 可以唯一写作 $sum_(i=1)^r omega^i e_i$，这里 $omega^i$ 就是通常的实值 $r$-形式。
+
+设 $V,W,Z$ 是有限维向量空间，$mu: V times W -> Z$ 是双线性映射，那么对于 $omega in scr(D)^r (V), eta in scr(D)^l (W)$，我们定义
+#nonum-equation[
+  $
+    (omega and eta)(X_1, dots, X_(r+l)) = \
+    1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) ("sgn" sigma)mu(omega(X_sigma(1), dots, X_sigma(r)), eta(X_sigma(r+1), dots, X_sigma(r+l)))
+  $
+]
+这里 $frak(S)$ 表示对称群，此定义推广了契积 $and$ 的定义。
+
+#proposition[
+  设 $v_i$ 是 $V$ 中的一组向量，$w_j$ 是 $W$ 中的一组向量。又设 $omega = sum_i omega^i v_i in scr(D)^r (V)$ 和 $eta = sum_j eta^j w_j in scr(D)^l (W)$，
+  这里 $omega^i$ 和 $eta^j$ 是流形 $M$ 上的 $RR$-值微分形式，那么
+  #nonum-equation[
+    $
+      omega and eta = sum_(i,j) (omega^i and eta^j) mu(v_i, w_j) in scr(D)^(r+l)(Z)
+    $
+  ]
+]<向量值微分形式乘积的具体表示>
+#proof[
+  参见 @tu2017differential[Prop.21.1] 以及 @kobayashi1963foundations[p.35, interiro product]，实际上就是按照定义验证即可。
+]
+
+#corollary[
+  #nonum-equation($d(omega and eta) = (d omega) and eta + (-1)^deg(omega) omega and d eta$)
+]
+
+有两种特殊情况值得注意。首先是 $V,W$ 都是矩阵，其中 $V$ 是 $m times p$ 矩阵的空间，$W$ 是 $p times n$ 矩阵的空间，此时
+$Z$ 选择 $m times n$ 矩阵的空间，$mu$ 就是矩阵乘法。那么 $omega$ 和 $eta$ 就是由微分形式构成的矩阵，而
+$omega and eta$ 是普通矩阵乘法，但是每一项之间的乘法则是契积 $and$。
+
+第二种情况是 $V=W=frak(g)$，这里 $frak(g)$ 是一个李代数，而 $mu : frak(g) times frak(g) -> frak(g)$ 是李括号。
+此时我们用 $[omega,eta]$ 来代替 $omega and eta$。容易看到
+#nonum-equation($[omega,eta](X,Y) = [omega(X), eta(Y)] - [omega(Y), eta(X)]$)
 
 === 李括号的导数表示
 #proposition[
@@ -138,6 +172,31 @@ $V times.circle scr(D)^r$，更具体说每个这样的形式 $omega$，在 $p i
 
   充分性：从 $[X,Y] = 0$ 得到 $(d((phi_t)_* Y))/(d t) = 0$，因此 $(phi_t)_* Y$ 保持不变，于是 $psi_t$ 和 $phi_t$ 始终交换。
 ]
+
+== 张量场
+
+#proposition[
+  如果 $omega$ 是 $r$-形式，那么有
+  #nonum-equation[
+    $
+    (d omega)(X_0, dots, X_r) = 1/(r+1) sum_(i=0)^r (-1)^i X_i (omega(X_0, dots, cancel(X_i), dots, X_r)) \
+    + 1/(r+1) sum_(0 <= i < j <= r) (-1)^(i+j) omega([X_i, X_j], X_0, dots, cancel(X_i), dots, cancel(X_j), dots, X_r)
+    $
+  ]
+  这里 $cancel(X)$ 表示这一项没有。当 $r=1,2$ 时上述公式有两个特别有用的形式：如果 $omega$ 是 $1$-形式，那么
+  #nonum-equation[
+    $
+      (d omega)(X,Y) = (X(omega(Y)) - Y(omega(X)) - omega([X,Y]))/2
+    $
+  ]
+  如果 $omega$ 是 $2$-形式，那么
+  #nonum-equation[
+    $
+      (d omega)(X,Y,Z) = 1/3 { X(omega(Y,Z)) + Y(omega(Z,X)) + Z(omega(X,Y)) \
+       - omega([X,Y],Z) - omega([Y,Z],X) - omega([Z,X],Y) }
+    $
+  ]
+]<微分形式求导作用在向量场上用李括号表示>
 
 == 李群
 === 群作用
