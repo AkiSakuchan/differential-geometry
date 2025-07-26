@@ -159,44 +159,49 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
   只用考虑 $M,N,V$ 都是欧式空间的情况。这个命题可直接通过 Jacobi 矩阵来验证。
 ]
 
-== 曲率形式和结构方程
+== 协变导数，曲率形式和结构方程
 设 $G$ 是李群，$pi : P -> M$ 是 $G$-主丛，$rho : G -> "GL"(V)$ 是 $G$ 在有限维向量空间 $V$ 上的表示。
-于是 $P$ 上的一个 $(rho,V)$-型*伪张量形式(pseudotensorial form)*指的是一个 $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
+于是 $P$ 上的一个 $(rho,V)$-型*伪张量形式(pseudotensorial form)*，或者 $G$-*等变(equivariant)*形式指的是一个
+$V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
 #nonum-equation($R_a^* phi = rho(a^(-1)) phi$)
 也就是说这个 $phi$ 和 $G$ 在 $V$ 上的作用可以交换。一个这样的形式，如果是水平的，也就是说当 $X_1,dots, X_r in T_u P$ 中任意一个是垂直切向量时
-就有 $phi(X_1, dots, X_r) = 0$，那么 $phi$ 就称为*张量形式*，它组成的层记为 $scr(D)^r(rho,P)$
+就有 $phi(X_1, dots, X_r) = 0$，那么 $phi$ 就称为*张量形式*，它组成的层记为 $scr(D)^r (rho,P)$
 张量形式在每个点上是 $and.big^r Q_u$ 的对偶空间的元素。
 
-#example(title: "平凡表示的情况")[
-  当 $rho_0$ 是 $G$ 的平凡表示时，张量形式 $phi$ 满足 $R_a^* phi = phi$。此时注意到 $pi_*|Q_u$ 是到 $T_p M$ 的同构，因此对任意
-  $Y in T_p M$ 都有 $X_u in T_u P$ 使得 $pi_* X_u = Y$，对于不同的 $u in pi^(-1)(p)$，不同的 $X_u$ 相差一个 $R_(a*)$，因此
-  $phi_M (Y)$ 定义为 $phi(X_u)$ 将是良定义；并且此时 $phi = pi^* phi_M$。这个 $phi_M$ 将是唯一的。
-]
 
 #proposition[
-  $E = P times_rho V$ 是 $P$ 的联系向量丛，$phi$ 是 $(rho,V)$-型的张量 $r$-形式，那么下列定义是良定义：对任意 $X_1, dots, X_r in T_x M$
-  #nonum-equation($tilde(phi)_x (X_1, dots, X_r) = u(phi(X_1^*, dots, X_r^*))$)
+  $E = P times_rho V$ 是 $P$ 的联系向量丛，$phi$ 是 $V$-值张量 $r$-形式，那么下列定义是良定义：对任意 $X_1, dots, X_r in T_x M$
+  #nonum-equation($phi^flat_x (X_1, dots, X_r) = u(phi(X_1^*, dots, X_r^*))$)
   这里 $pi(u) = x$，$X_i^* in T_u P$ 使得 $pi_* X_i^* = X_i$；这里还把 $u$ 看成从 $V$ 到纤维 $E_x$ 的线性映射（参见 @主丛元素视为从标准纤维到任意纤维的同构）。
-  $tilde(phi)$ 是 $M$ 上一个 $E$-值 $r$ 形式，$phi mapsto tilde(phi)$ 是从 $P$ 上的 $(rho,V)$-型张量形式到 $M$ 上的微分形式的线性同构。
+  $tilde(phi)$ 是 $M$ 上一个 $E$-值 $r$ 形式，$phi mapsto phi^flat$ 是从 $P$ 上的 $V$-值张量形式到 $M$ 上的 $E$-值微分形式的线性同构。
 
-  反过来，如果给定一个 $M$ 上的 $E$-值 $r$-形式 $tilde(phi)$，那么下列定义的微分形式是 $(rho,V)$-型的 $r$-张量形式：对任意 $X^*_1, dots, X^*_r in T_u P$
-  #nonum-equation($phi (X^*_1, dots, X^*_r) = u^(-1)(tilde(phi)_x (pi_* X^*_1, dots, pi_* X^*_r))$)
-  并且是上述 $phi mapsto tilde(phi)$ 的逆映射。
+  反过来，如果给定一个 $M$ 上的 $E$-值 $r$-形式 $phi$，那么下列定义的微分形式是 $V$-值 $r$-张量形式：对任意 $X^*_1, dots, X^*_r in T_u P$
+  #nonum-equation[
+    $
+    phi^sharp (X^*_1, dots, X^*_r) = u^(-1)(phi_x (pi_* X^*_1, dots, pi_* X^*_r))
+    $
+    ]
+  并且是上述 $phi mapsto phi^flat$ 的逆映射。
 ]<主丛张量形式与联系丛形式同构>
 #proof[
-  首先 $tilde(phi)$ 是良定义: 满足 $pi_* X^*'_i = pi_* X^*_i$ 的 $X^*'_i in T_u P$ 必然有 $pi_*(X^*'_i - X^*_i) = 0$，
-  也就是说 $X^*'_i - X^*_i$ 是垂直的，这样由于 $phi$ 是水平的，因此同一个 $u in P$，$phi_x$ 的定义与 $X^*_i$ 的选择无关。
+  首先 $phi^flat$ 是良定义: 满足 $pi_* X^*'_i = pi_* X^*_i$ 的 $X^*'_i in T_u P$ 必然有 $pi_*(X^*'_i - X^*_i) = 0$，
+  也就是说 $X^*'_i - X^*_i$ 是垂直的，这样由于 $phi$ 是水平的，因此同一个 $u in P$，$phi^flat_x$ 的定义与 $X^*_i$ 的选择无关。
   当 $u$ 变为 $u a$ 时，由于 $pi compose R_a = pi$，因此 $pi_*(R_(a*) X^*_i) = X_i$，并且 $R_(a*)X^*_i in T_(u a) P$，然后容易看到
   #nonum-equation[
     $(u a) phi(R_(a*)X^*_1, dots, R_(a*)X^*_r) = u(phi(X_1^*, dots, X_r^*))$
   ]
-  上面已经证明了和 $X^*_i$ 的选择无关，于是 $tilde(phi)$ 是良定义。
+  上面已经证明了和 $X^*_i$ 的选择无关，于是 $phi^flat$ 是良定义。
 
   反过来，如果有任何一个 $X^*_i$ 是垂直的，那么显然 $pi_* X^*_i = 0$，上面定义的 $phi_x (X^*_1, dots, X^*_r) = 0$。
   若有 $a in G$，那么设 $X_i = pi_* X^*_i$，于是不难看到
-  #nonum-equation($R_a^* phi(X^*_1, dots, X^*_r) = phi(R_(a*) X^*_1, dots, R_(a*) X^*_r) = (u a)^(-1)(tilde(phi)_x (X_1, dots, X_r))$)
-  注意 $u: xi mapsto [u, xi]$，现在 $[u,xi]$ 是不变的，但是 $u$ 变成了 $u a$，因此 $xi$ 必然变成 $a^(-1) xi$，所以上式最后等于
-  $rho(a^(-1)) u^(-1)(tilde(phi)_x (X_1, dots, X_r))$。
+  #nonum-equation[
+    $
+      R_a^* phi^sharp (X^*_1, dots, X^*_r) = phi^sharp (R_(a*) X^*_1, dots, R_(a*) X^*_r) 
+      = (u a)^(-1)(phi_x (X_1, dots, X_r))
+    $
+    ]
+  注意 $u: xi mapsto [u, xi]$，现在 $[u,xi] = phi_x (X_1, dots, X_r)$ 是不变的，但是 $u$ 变成了 $u a$，因此 $xi$ 必然变成 $a^(-1) xi$，所以上式最后等于
+  $rho(a^(-1)) u^(-1)(phi_x (X_1, dots, X_r))$。
 
   最后它们互为逆映射，以及是线性映射很容易验证。
 ]
@@ -205,13 +210,19 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
   满足 $f(u a) = rho(a^(-1)) f(u)$ 的映射 $f:P -> V$ 和 $E$ 的截面一一对应。 
 ]
 
+当 $rho$ 是平凡表示时，$E = P times_rho V tilde.equiv P times V$，此时 $E$-值微分形式就是 $M$ 上的 $V$-值微分形式
+#corollary[
+  $P$ 上的$V$-值水平微分形式 $phi$ 如果满足 $R_a^* phi = phi,a in G$，那么存在唯一一个 $M$ 上的 $V$-值微分形式 $phi_M$ 使得 $phi = pi^* phi_M$。
+  特别地，当 $V = RR$ 时的特殊情况就是说 $P$ 上 $G$-等变水平形式与 $M$ 上的微分形式一一对应。
+]
+
 
 #proposition[
   设 $Gamma$ 是 $P$ 上的联络，$Q_u$ 是 $T_u P$ 的水平子空间，$h:T_u P -> Q_u$ 是水平投射。
-  如果 $phi$ 是 $(rho,V)$-型的伪张量 $r$-形式，那么
-  + 通过 $(phi h)(X_1, dots, X_r) = phi(h X_1, dots, h X_r), X_i in T_u P$ 定义的 $phi h$ 是 $(rho,V)$-型的张量 $r$-形式；
-  + $d phi$ 是 $(rho,V)$-型的伪张量 $(r+1)$-形式；
-  + $D phi = (d phi)h$ 是 $(rho,V)$-型的张量 $(r+1)$-形式
+  如果 $phi$ 是 $V$-值伪张量 $r$-形式，那么
+  + 通过 $(phi h)(X_1, dots, X_r) = phi(h X_1, dots, h X_r), X_i in T_u P$ 定义的 $phi h$ 是张量形式；
+  + $d phi$ 是伪张量 $(r+1)$-形式；
+  + $D phi = (d phi)h$ 是张量 $(r+1)$-形式
 ]
 #proof[
   不难验证对任意 $a in G$ 有 $R_(a*) compose h = h compose R_(a*)$ 进而有
@@ -232,17 +243,46 @@ $psi_alpha: pi^(-1)(U_alpha) ->^tilde U_alpha times G$，设对应的转移函�
 ]
 
 #proposition[
-  假设 $V$ 是一个代数，又有 $(rho,V)$-型的张量形式 $omega,eta$ 那么
+  假设有 $P$ 上的 $G$-等变水平形式 $omega$，又有 $V$-值张量形式 $eta$，那么 $omega and eta$ 是 $V$-值张量形式，并且
   #nonum-equation($D(omega and eta) = D omega and eta + (-1)^(deg omega) omega and D eta$)
 ]
 #proof[
-  参见 @tu2017differential[Prop.31.6]，实际上根据 @向量值微分形式乘积的具体表示 然后直接验证即可。
+  对任意 $a in G$ 和 $X_1, dots, X_(r+l) in T_u P$，这里 $r = deg omega, l = deg eta$，有
+  #nonum-equation[
+    $
+      R_a^*&(omega and eta)(X_1, dots, X_(r+l)) = (omega and eta)(R_(a*) X_1, dots, R_(a*) X_(r+l)) \
+      &= 1 /(r! dot l!) sum_(sigma in frak(S)_(r+l)) "sgn"(sigma) omega(R_(a*)X_sigma(1), dots, R_(a*)X_sigma(r)) eta(R_(a*)X_sigma(r+1), dots, R_(a*)X_sigma(r+l)) \
+      &= 1 /(r! dot l!) sum_(sigma in frak(S)_(r+l)) "sgn"(sigma) omega(X_sigma(1), dots, X_sigma(r)) rho(a^(-1))( eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
+      &= rho(a^(-1)) ( 1 /(r! dot l!) sum_(sigma in frak(S)_(r+l)) "sgn"(sigma) omega(X_sigma(1), dots, X_sigma(r)) eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
+      &= rho(a^(-1)) ( (omega and eta)(X_1 , dots, X_(r+l)) )
+    $
+  ]
+  因此 $omega and eta$ 是 $G$-等变的，它显然也是水平的，所以 $omega and eta$ 是 $V$-值张量形式。
+
+  根据 @向量值微分形式乘积的外微分 可知
+  #nonum-equation[
+    $
+      D(omega and eta) &= (d(omega and eta))h \
+      &= (d omega and eta + (-1)^(deg omega) omega and d eta)h \
+      &= D omega and eta + (-1)^(deg omega) omega and D eta
+    $
+  ]
+  最后一步直接来自向量值微分形式乘法的定义以及 $omega h = omega, eta h = eta$ 也就是它们都是水平的。
 ]
 
-若 $V$ 是代数，那么可以诱导 $E_x$ 也变成 代数，于是 $u : V -> E_x$ 就是代数同构，这样可以验证：
-#proposition[
-  在 @主丛张量形式与联系丛形式同构 的同构下，主丛上的协变求导 $D$ 诱导一个算子：
-  #nonum-equation($D: scr(D)^r (E) --> scr(D)^(r+1) (E)$)
-  这个算子是 $E$ 上的协变导数。
+根据 @主丛张量形式与联系丛形式同构 中的同构，对任意 $M$ 上的 $E$-值微分形式 $eta$，协变导数
+#nonum-equation[
+  $
+    D: scr(D)^r (rho,V) --> scr(D)^(r+1) (rho,V)
+  $
 ]
-根据这个命题，主丛联络诱导它的联系向量丛上的联络。
+可以通过 $eta mapsto (D eta^sharp)^flat$ 诱导一个算子
+#nonum-equation[
+  $
+    D: scr(D)^r (E) --> scr(D)^(r+1)(E)
+  $
+]
+关于这个算子有
+#proposition[
+  $D:scr(D)^r (E) -> scr(D)^(r+1)(E)$ 是 $E$ 上的协变导数。
+]
