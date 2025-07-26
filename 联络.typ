@@ -171,14 +171,14 @@ $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
 
 #proposition[
   $E = P times_rho V$ 是 $P$ 的联系向量丛，$phi$ 是 $V$-值张量 $r$-形式，那么下列定义是良定义：对任意 $X_1, dots, X_r in T_x M$
-  #nonum-equation($phi^flat_x (X_1, dots, X_r) = u(phi(X_1^*, dots, X_r^*))$)
+  #nonum-equation($phi^flat (X_1, dots, X_r) = u(phi(X_1^*, dots, X_r^*))$)
   这里 $pi(u) = x$，$X_i^* in T_u P$ 使得 $pi_* X_i^* = X_i$；这里还把 $u$ 看成从 $V$ 到纤维 $E_x$ 的线性映射（参见 @主丛元素视为从标准纤维到任意纤维的同构）。
   $tilde(phi)$ 是 $M$ 上一个 $E$-值 $r$ 形式，$phi mapsto phi^flat$ 是从 $P$ 上的 $V$-值张量形式到 $M$ 上的 $E$-值微分形式的线性同构。
 
   反过来，如果给定一个 $M$ 上的 $E$-值 $r$-形式 $phi$，那么下列定义的微分形式是 $V$-值 $r$-张量形式：对任意 $X^*_1, dots, X^*_r in T_u P$
   #nonum-equation[
     $
-    phi^sharp (X^*_1, dots, X^*_r) = u^(-1)(phi_x (pi_* X^*_1, dots, pi_* X^*_r))
+    phi^sharp (X^*_1, dots, X^*_r) = u^(-1)(phi (pi_* X^*_1, dots, pi_* X^*_r))
     $
     ]
   并且是上述 $phi mapsto phi^flat$ 的逆映射。
@@ -212,8 +212,10 @@ $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
 
 当 $rho$ 是平凡表示时，$E = P times_rho V tilde.equiv P times V$，此时 $E$-值微分形式就是 $M$ 上的 $V$-值微分形式
 #corollary[
-  $P$ 上的$V$-值水平微分形式 $phi$ 如果满足 $R_a^* phi = phi,a in G$，那么存在唯一一个 $M$ 上的 $V$-值微分形式 $phi_M$ 使得 $phi = pi^* phi_M$。
-  特别地，当 $V = RR$ 时的特殊情况就是说 $P$ 上 $G$-等变水平形式与 $M$ 上的微分形式一一对应。
+  $P$ 上的$V$-值水平微分形式 $phi$ 如果满足 $R_a^* phi = phi,a in G$，那么 $phi^flat$ 是 $M$ 上的 $V$-值微分形式，
+  并且 $phi = pi^* phi^flat$，或者对于 $M$ 上的 $V$-形式 $phi$ 有 $phi^sharp = pi^* phi$。
+
+  特别地，当 $V = RR$ 时的特殊情况就是说 $P$ 上 $G$-等变水平形式与 $M$ 上的普通微分形式一一对应。
 ]
 
 
@@ -221,8 +223,8 @@ $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
   设 $Gamma$ 是 $P$ 上的联络，$Q_u$ 是 $T_u P$ 的水平子空间，$h:T_u P -> Q_u$ 是水平投射。
   如果 $phi$ 是 $V$-值伪张量 $r$-形式，那么
   + 通过 $(phi h)(X_1, dots, X_r) = phi(h X_1, dots, h X_r), X_i in T_u P$ 定义的 $phi h$ 是张量形式；
-  + $d phi$ 是伪张量 $(r+1)$-形式；
-  + $D phi = (d phi)h$ 是张量 $(r+1)$-形式
+  + $d phi$ 是 $(r+1)$-伪张量形式；
+  + $D phi = (d phi)h$ 是 $(r+1)$-张量形式
 ]
 #proof[
   不难验证对任意 $a in G$ 有 $R_(a*) compose h = h compose R_(a*)$ 进而有
@@ -286,3 +288,42 @@ $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
 #proposition[
   $D:scr(D)^r (E) -> scr(D)^(r+1)(E)$ 是 $E$ 上的协变导数。
 ]
+#proof[
+  设 $omega$ 是 $M$ 上的 $r$-形式，$eta$ 是 $M$ 上的 $E$-值 $l$-形式，那么首先 $(omega and eta)^sharp = omega^sharp and eta^sharp$：
+  对任意 $X^*_1, dots, X^*_(r+l) in T_u P$，设 $X_i = pi_* X^*_i$，那么
+  #nonum-equation[
+    $
+      (omega and eta)^sharp (X^*_1, dots, X^*_(r+l)) &= u^(-1)((omega and eta)(X_1, dots, X_(r+l))) \
+      &= u^(-1)( 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) omega(X_sigma(1), dots, X_sigma(r)) eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
+      &= 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) omega(X_sigma(1), dots, X_sigma(r)) u^(-1)( eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
+      &= 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) omega^sharp (X^*_sigma(1), dots, X^*_sigma(r)) eta^sharp ( X^*_sigma(r+1), dots, X^*_sigma(r+l) ) \
+      &= (omega^sharp and eta^sharp)(X^*_1, dots, X^*_(r+l))
+    $
+  ]
+  这里使用了 $u^(-1)$ 是线性的以及 $omega^sharp = pi^* omega$。类似的也可以证明 $phi mapsto phi^flat$ 与 $and$ 交换，
+  只需要注意到 $omega(X^*_1, dots, X^*_r) = pi^* omega^flat (X^*_1, dots, X^*_r) = omega^flat (X_1, dots, X_r)$ 即可。
+
+  因此对于 $M$ 上的 $r$-形式 $omega$ 和 $E$-值 $l$-形式 $eta$ 有
+  #nonum-equation[
+    $
+      D(omega and eta) &= (D omega^sharp and eta^sharp)^flat \
+      &= (D omega^sharp and eta^sharp + (-1)^r omega^sharp and D eta^sharp)^flat \
+      &= D omega and eta + (-1)^(deg omega) omega and D eta
+    $
+  ]
+  最后只需要再说明 $D omega = d omega$ 即可：设有 $X_0, dots, X_r in T_x M$，那么如果 $X^*_i in T_u P$ 满足 $pi_* X^*_i = X_i$ 则有
+  #nonum-equation[
+    $
+      (D omega)(X_0, dots, X_r) &= (D omega^sharp)^flat (X_0, dots, X_r) \
+      &= u( D omega^sharp (X^*_0, dots, X^*_r) ) \
+      &= u( d omega^sharp (h X^*_0, dots, h X^*_r) ) \
+      &= u( d(pi^* omega) (h X^*_0, dots, h X^*_r) ) \
+      &= u( pi^*(d omega) (h X^*_0, dots, h X^*_r) ) \
+      &= u( d omega ( X_0, dots, X_r ) ) = u( pi^*(d omega) (X^*_0, dots, X^*_r) ) \
+      &= u( (d omega)^sharp (X^*_0, dots, X^*_r) ) \
+      &= ((d omega)^sharp)^flat (X_0, dots, X_r) = (d omega)(X_0, dots, X_r)
+    $
+  ]
+]
+
+我们证明了主丛上的协变导数诱导联系向量丛上的协变导数，或者说主丛联络诱导联系向量丛上的一个联络。
