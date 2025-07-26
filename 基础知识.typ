@@ -95,9 +95,8 @@ $scr(D)^r (V) = V times.circle scr(D)^r$，更具体说每个这样的形式 $om
 $Z$ 选择 $m times n$ 矩阵的空间，$mu$ 就是矩阵乘法。那么 $omega$ 和 $eta$ 就是由微分形式构成的矩阵，而
 $omega and eta$ 是普通矩阵乘法，但是每一项之间的乘法则是契积 $and$。
 
-第二种情况是 $V=W=frak(g)$，这里 $frak(g)$ 是一个李代数，而 $mu : frak(g) times frak(g) -> frak(g)$ 是李括号。
-此时我们用 $[omega,eta]$ 来代替 $omega and eta$。容易看到
-#nonum-equation($[omega,eta](X,Y) = [omega(X), eta(Y)] - [omega(Y), eta(X)]$)
+第二种情况是 $V=W=frak(g)$，这里 $frak(g)$ 是一个李代数，而 $mu : frak(g) times frak(g) -> frak(g)$ 是李括号，容易看到
+#nonum-equation($(omega and eta)(X,Y) = [omega(X), eta(Y)] - [omega(Y), eta(X)]$)
 
 === 李括号的导数表示
 #proposition[
