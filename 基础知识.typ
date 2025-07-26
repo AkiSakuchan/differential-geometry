@@ -89,7 +89,7 @@ $scr(D)^r (V) = V times.circle scr(D)^r$，更具体说每个这样的形式 $om
 
 #corollary[
   #nonum-equation($d(omega and eta) = (d omega) and eta + (-1)^deg(omega) omega and d eta$)
-]
+]<向量值微分形式乘积的外微分>
 
 有两种特殊情况值得注意。首先是 $V,W$ 都是矩阵，其中 $V$ 是 $m times p$ 矩阵的空间，$W$ 是 $p times n$ 矩阵的空间，此时
 $Z$ 选择 $m times n$ 矩阵的空间，$mu$ 就是矩阵乘法。那么 $omega$ 和 $eta$ 就是由微分形式构成的矩阵，而
