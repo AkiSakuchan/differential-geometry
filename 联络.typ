@@ -293,10 +293,11 @@ $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
   对任意 $X^*_1, dots, X^*_(r+l) in T_u P$，设 $X_i = pi_* X^*_i$，那么
   #nonum-equation[
     $
-      (omega and eta)^sharp (X^*_1, dots, X^*_(r+l)) &= u^(-1)((omega and eta)(X_1, dots, X_(r+l))) \
-      &= u^(-1)( 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) omega(X_sigma(1), dots, X_sigma(r)) eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
-      &= 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) omega(X_sigma(1), dots, X_sigma(r)) u^(-1)( eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
-      &= 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) omega^sharp (X^*_sigma(1), dots, X^*_sigma(r)) eta^sharp ( X^*_sigma(r+1), dots, X^*_sigma(r+l) ) \
+      &quad (omega and eta)^sharp (X^*_1, dots, X^*_(r+l)) \
+      &= u^(-1)((omega and eta)(X_1, dots, X_(r+l))) \
+      &= u^(-1)( 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) "sgn"(sigma) omega(X_sigma(1), dots, X_sigma(r)) eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
+      &= 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) "sgn"(sigma) omega(X_sigma(1), dots, X_sigma(r)) u^(-1)( eta(X_sigma(r+1), dots, X_sigma(r+l)) ) \
+      &= 1/(r! dot l!) sum_(sigma in frak(S)_(r+l)) "sgn"(sigma) omega^sharp (X^*_sigma(1), dots, X^*_sigma(r)) eta^sharp ( X^*_sigma(r+1), dots, X^*_sigma(r+l) ) \
       &= (omega^sharp and eta^sharp)(X^*_1, dots, X^*_(r+l))
     $
   ]
@@ -395,4 +396,34 @@ $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
     $
   ]
   根据联络的定义，$R_(a_t*) X$ 也是水平的，因此 $[X,A^*]$ 是水平的。
+]
+
+李群表示 $rho:G -> "GL"(V)$ 诱导一个李代数表示 $rho_* : frak(g) -> frak(g l)(V)$，由此我们得到一个双线性映射
+#nonum-equation[
+  $
+    frak(g) times V &--> V \
+    (A,v) &mapsto.long rho_*(A)v
+  $
+]
+于是对于 $P$ 上的 $frak(g)$-值微分形式 $alpha$ 和 $V$-值微分形式 $beta$ 就可以定义 $alpha and beta$。
+
+现在我们有 @向量丛截面的协变导数 的推广：
+#theorem[
+  设 $omega$ 是 $G$-主丛联络形式，$rho:G -> "GL"(V)$ 是 $G$ 的表示。如果 $phi in scr(D)^r (rho,V)$ 是 $r$-张量形式，那么协变导数可以表示为
+  #nonum-equation[
+    $
+      D phi = d phi + omega and phi
+    $
+  ] 
+]<协变导数用联络形式乘积来表示>
+#proof[
+  我们需要证明对任意 $X_0, dots, X_r in T_u P$ 有
+  $
+    (d phi)(h X_1, dots, h X_(r+1)) = (d phi)(X_1, dots, X_(r+1)) + \
+      1/r! sum_(sigma in frak(S)_(r+1)) "sgn"(sigma) rho_*(omega(X_sigma(1))) phi(X_sigma(2), dots, X_sigma(r+1)) = "I" + "II"
+  $<协变导数用联络形式表示的具体形式>
+
+  当 $X_0, dots, X_(r+1)$ 全部水平时，上式 $"II"$ 部分为零，因为 $omega(X_i) = 0$，此时上式就退化为协变导数的定义。
+
+
 ]
