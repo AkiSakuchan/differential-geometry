@@ -327,3 +327,72 @@ $V$-值 $r$-形式 $phi$，且满足对任意 $a in G$ 都有
 ]
 
 我们证明了主丛上的协变导数诱导联系向量丛上的协变导数，或者说主丛联络诱导联系向量丛上的一个联络。
+
+#theorem(title: "结构方程")[
+  设 $omega$ 是主丛联络形式，$Omega$ 是对应的曲率形式，那么对任意 $X,Y in T_u P$ 有
+  #nonum-equation[$
+                    d omega(X,Y) = -1/2 [ omega(X), omega(Y) ] + Omega(X,Y)
+  $]
+  考虑到 $(X,Y) mapsto [omega(X),omega(Y)]$ 本身也是一个 $2$ 形式，上式可以写作
+  #nonum-equation[
+    $
+      Omega = d omega + 1/2 [omega, omega]
+    $
+  ]
+]
+#corollary[
+  如果 $X,Y$ 都是水平向量场，那么
+  #nonum-equation[
+    $
+      omega([X,Y]) = -2 Omega(X,Y)
+    $
+  ]
+  故此时 $[X,Y]$ 也是水平的当且仅当 $Omega(X,Y)=0$。
+]
+#proof[
+  只需要把 @微分形式求导作用在向量场上用李括号表示 应用到 $d omega$ 上就得到
+  #nonum-equation[
+    $
+      2 d omega(X,Y) = X(omega(Y)) - Y(omega(X)) - omega([X,Y])
+    $
+  ]
+  而因为 $X,Y$ 水平，故 $omega(X)=omega(Y)=0$；再带入到定理中的等式即可得到推论。
+]
+
+#proof(title: "定理的证明")[
+  $P$ 上的每个向量都可以按照联络唯一分解为水平分量和垂直分量之和。因此分三种情况讨论：
+
+  当 $X,Y$ 都是水平时，$omega(X)=omega(Y)=0$，这就是曲率形式的定义。
+
+  当 $X,Y$ 都是垂直时，设 $A,B in frak(g)$ 并且 $X = A^*_u, Y=B^*_u$。那么根据 @微分形式求导作用在向量场上用李括号表示 可得
+  #nonum-equation[
+    $
+      2 d omega(A^*, B^*) &= A^*(omega(B^*)) - B^*(omega(A^*)) - omega([A^*,B^*]) \
+      &= -omega([A,B]) = -[A,B] = - [omega(A^*),omega(B^*)]
+    $
+  ]
+  这里 $omega(A^*) = A,omega(B^*) = B$ 可以视为常量。考虑到 $Omega$ 是水平的，因此等式成立。
+
+  当 $X$ 是水平向量场，$Y=A^*_u$ 是垂直的，那么 $omega(X)=0, Omega(X,Y)=0$，因此只需要证明 $d omega(X,Y) = 0$ 即可。
+  同样根据 @微分形式求导作用在向量场上用李括号表示 有
+  #nonum-equation[
+    $
+      2 d omega(X,A^*) &= X(omega(A^*)) - A^*(omega(X)) - omega([X,A^*]) \
+      &= -omega([X,A^*])
+    $
+  ]
+  然后通过下面引理就得到结论。
+]
+
+#lemma[
+  如果 $A in frak(g)$，$X$ 是水平向量场，那么 $[X,A^*]$ 是水平向量场。
+]
+#proof[
+  设 $a_t = exp t A$，那么 $A^*$ 的单参数变换群是 $R_a_t$。于是根据 @向量场李括号的导数表示 就有
+  #nonum-equation[
+    $
+      [X,A^*] = lim_(t->0) (R_(a_t*) X - X)/t
+    $
+  ]
+  根据联络的定义，$R_(a_t*) X$ 也是水平的，因此 $[X,A^*]$ 是水平的。
+]
