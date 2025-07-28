@@ -1,0 +1,3 @@
+[submodule "typst-book-style"]
+	path = typst-book-style
+	url = git@github.com:AkiSakuchan/typst-book-style.git
