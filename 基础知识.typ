@@ -310,3 +310,71 @@ $pi^(-1)(U) tilde.equiv U times G$ 也将产生映射
   这里 $x = pi(u)$，并且对任意 $a in G$ 有
   #nonum-equation($(u a)(xi) = u(a xi)$)
 ]<主丛元素视为从标准纤维到任意纤维的同构>
+
+设 $G$ 是拓扑群，$H$ 是子群，$q:Q -> M$ 是 $H$-主丛。那么 $G$ 通过群乘法可以视为一个左 $H$-空间，这样就有纤维丛 $p: Q times_H G -> M$。
+注意 $Q times_H G$ 也可以视为右 $G$-空间，于是如果有 $G$-主丛 $pi: P -> M$ 和 $M$ 上的右 $G$-同胚 $rho: Q times_H G -> P$，那么
+$Q times_H G$ 是 $M$ 上的 $G$-主丛，这实质上告诉我们 $P$ 的结构群没有那么大，只有 $H$，此时我们说 $(q,rho)$ 是 $pi$ 的*约化(reduction)*，
+$Q$ 是 $P$ 的*约化丛(reduced bundle)*。
+
+不难验证
+#nonum-equation[
+  $
+    Q &--> Q times_H G \
+    u &mapsto.long [u,1]
+  $
+]
+是单射，因此结合 $rho$ 我们就得到从 $Q$ 到 $P$ 的单射，通过这个单射可以把 $Q$ 视为 $P$ 的子集，
+于是我们有了一个 $P$ 的子集 $Q$，并且 $Q -> M$ 是 $H$-主丛。
+反过来，如果有 $P$ 的子集 $Q$ 是 $M$ 上的 $H$-主丛，那么
+#nonum-equation[
+  $
+    Q times_H G &--> P \
+    [u,g] &mapsto.long u dot g
+  $
+]
+是 $G$-同胚，因此 $Q $ 是 $P$ 的约化丛。这样我们看到，$P$ 的约化丛的另一个等价定义便是 $P$ 的子集 $Q$ 使得 $Q -> M$ 是 $H$-主丛。
+
+#note-box[
+  考虑到 $"GL"(RR,n)$-主丛实质上是 $n$-维实向量丛，因此对任意一般线性群的李子群 $G$，以它为结构群的主丛
+  $Q$ 实质上是某个 $M$ 上的向量丛的标架丛的约化丛。因此此后讨论 $G$-丛时，这里 $G$ 是矩阵李群，可以指 $G$-主丛或者向量丛的标架丛的约化丛，
+  此时可以视为某种向量丛。
+]
+
+
+#proposition[
+  $G$-主丛 $pi: P -> M$ 能约化到子群 $H$-主丛 $q: Q -> M$ 上当且仅当存在 $P$ 的局部平凡化 ${(U_alpha,phi_alpha)}$
+  使得其上的转换函数 $psi_(beta alpha)$ 的值都在 $H$ 当中。
+]<约化群的充要条件>
+#proof[
+  假设 $G$ 能约化到 $H$ 上，$q: Q -> M$ 是约化丛。那么 $Q$ 可以视为 $P$ 的子空间，设 $pi' = pi|Q$。
+  设有 $Q$ 的局部平凡化 ${(U_alpha,phi'_alpha)}$，那么每个 $H$-同胚
+  #nonum-equation[
+    $phi'_alpha : pi'^(-1)(U_alpha) -->^tilde U_alpha times H$
+  ]
+  我们希望扩展到 $pi^(-1)(U_alpha)$ 上成为 $G$-同胚 $phi_alpha$。于是对任意 $v in pi^(-1)(U_alpha)$，必然可以表示为 $v = u a$，这里
+  $u in pi'^(-1)(U_alpha)$，于是 $phi_alpha (v) = phi'_alpha (u) a$，所以 $phi_alpha$ 只能如此定义。
+  它是良定义的：若有 $v = u_1 a_1 = u_2 a_2$，那么 $u_1 = u_2 a_2 a_1^(-1)$；
+  又由于 $u_1,u_2$ 在同一个 $Q$ 的纤维里，于是肯定有 $a in H$ 使得 $u_1 = u_2 a$，进而考虑到 $G$ 自由作用在 $P$ 上，于是 $a_2 a_1^(-1) = a in H$，
+  这样 $phi'_alpha (u_1) = phi'_alpha (u_2 a_2 a_1^(-1))$ 就可以得到 $phi'_alpha (u_1) a_1 = phi'_alpha (u_2) a_2$。
+  
+  假设 $phi'_alpha (u_1) a_1 = phi'_alpha (u_2) a_2$，那么由于 $phi'_alpha$ 的值的第二项在 $H$ 当中，于是 $a_2 a_1^(-1) in H$，
+  然后就容易得到 $u_1 = u_2 a_2 a_1^(-1)$ 进而 $phi'_alpha$ 是单射。
+  对任意 $(x,a) in U_alpha times G$，肯定有 $u in pi'^(-1)(U_alpha)$ 使得 $phi'_alpha (u) = (x,1)$，于是 $phi_alpha (u a) = (x,a)$，
+  即 $phi_alpha$ 是满射。最后不难验证 $phi_alpha$ 是同胚，以及值在 $H$ 当中。
+
+  现在假设有 $M$ 上的开覆盖 ${U_alpha}$ 和其上的转换函数 $psi_(beta alpha)$，并且值在 $H$ 当中。那么利用子群的泛性质可以得到
+  $psi_(beta alpha)$ 还是从 $U_beta inter U_alpha$ 到 $H$ 的连续函数。
+  这样从 ${psi_(beta alpha)}$ 可以构造 $M$ 上的 $H$-主丛 $pi': Q -> M$。我们再按照下列方法构造从 $Q$ 到 $P$ 的 $G$-单射：
+  ${pi'^(-1)(U_alpha)},{pi^(-1)(U_alpha)}$ 各自是 $Q$ 和 $P$ 的开覆盖，于是下列映射是 $G$-单射，并且能合成从 $Q$ 到 $P$ 的映射：
+  #nonum-equation[
+    $
+      pi'^(-1)(U_alpha) -->^tilde U_alpha times H arrow.hook U_alpha times G -->^tilde pi^(-1)(U_alpha)
+    $
+  ]
+  不难验证上述映射在 $pi'^(-1)(U_alpha inter U_beta)$ 上相同，因为它们差的是同一个 $psi_(beta alpha)(u)$ 的乘积。
+  这样一来就可以把 $Q$ 视为 $P$ 的子丛，于是 $Q$ 就是 $P$ 的约化。
+]
+
+#note-box[
+  上述定理和证明可以直接改为流形和李群的情况，因为李子群具有类似地泛性质，而微分同胚的验证是完全一样的。
+]
